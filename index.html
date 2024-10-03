@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    
+    <!-- Importação da fonte estilo 8 bits -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0;
+        }
+        
+        /* Configurações do corpo da página */
+        html, body {
+            height: 100%;
+            background-color: black;
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        /* Configuração do header com imagem de fundo e texto */
+        header {          
+            height: 900px;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            position: relative;
+        }
+
+        /* Configuração do texto sobre o titulo */
+        .fonteTitulo {
+            text-align: center;
+            font-size: 22px;
+            color: rgb(11, 172, 0);
+        }
+
+        /* Configuração do parágrafo no canto esquerdo */
+        .fonteParagrafo {
+            left: 20px;
+            bottom: 20px;
+            max-width: 1000px;
+            font-size: 20px;
+            color: rgb(11, 172, 0);
+        }
+
+        /* Estilos para a arte ASCII */
+        .ascii-art {
+            font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada */
+            white-space: pre; /* Mantém espaços e quebras de linha */
+            color: rgb(11, 172, 0); /* Cor verde */
+            line-height: 1; /* Ajusta o espaçamento entre linhas */
+            text-align: left; /* Alinhamento à esquerda */
+        }
+        /* Estilos para a calculadora de pegada de carbono */
+        .calculadora-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #1a1a1a; /* Fundo escuro para harmonizar com o site */
+            border: 2px solid rgb(11, 172, 0); /* Borda verde */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(11, 172, 0, 0.5);
+        }
+        /*Estilos para a calculadora*/
+        .calculadora-container h1 {
+            font-size: 16px;
+            color: rgb(11, 172, 0);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /*Estilos para a calculadora*/
+        .calculadora-container label {
+            display: block;
+            margin: 15px 0 5px;
+            font-size: 12px;
+            color: rgb(11, 172, 0);
+        }
+        /*Estilos para a calculadora*/
+        .calculadora-container input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgb(11, 172, 0);
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+        }
+        /*Estilos para a calculadora*/
+        .calculadora-container button {
+            padding: 10px 15px;
+            background-color: rgb(11, 172, 0);
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+        }
+        /*Estilos para a calculadora*/
+        .calculadora-container button:hover {
+            background-color: #27ae60;
+        }
+        /*Estilos para a calculadora*/
+        .calculadora-container #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            color: rgb(11, 172, 0);
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+
+    <!--Lógica da Calculadora-->
+    <script>
+        function calcularPegada() {
+            // Pegando os valores inseridos
+            var transporte = parseFloat(document.getElementById('transporte').value) || 0;
+            var energia = parseFloat(document.getElementById('energia').value) || 0;
+            var residuos = parseFloat(document.getElementById('residuos').value) || 0;
+
+            // Fórmulas simples para estimar a pegada de carbono
+            var pegadaTransporte = transporte * 0.21; // 0.21 kg CO2e por km (média para carros a gasolina)
+            var pegadaEnergia = energia * 0.233; // 0.233 kg CO2e por kWh (média global)
+            var pegadaResiduos = residuos * 1.8; // 1.8 kg CO2e por kg de resíduos gerados
+
+            // Soma total da pegada
+             var pegadaTotal = pegadaTransporte + pegadaEnergia + pegadaResiduos;
+
+            // Exibir o resultado
+            document.getElementById('resultado').innerHTML = "Sua pegada de carbono estimada é de " + pegadaTotal.toFixed(2) + " kg de CO2 por semana.";
+        }
+    </script>
+
+</head>
+<body>
+    <header>
+        <!-- Centraliza o título no meio do header -->
+        <section class="fonteTitulo">
+            <br><br><br>
+            <h1>Um site para conhecimento :></h1>
+
+            <!--Arte ASCII-->
+            <div class="ascii-art">
+█████████████████████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+████████████████████████████████████████▓████████████████████████████████████████████
+███████████████████████████████▓▓▒▒▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓█████████████████████████████████
+████████████████████████████▓▓███████▓▓██▓▓▒▓███▒▒▓▓▒▒▓▓▓██████████▓█████████████████
+████████████████████████▓▓▓▓████████▓▒███▓▒▒███▓▒▓█▓▓▓▒▒▒▒▓▓█████████████████████████
+██████████████████████▓▓██████████▓▓▓███▓▒▒███▓▓██████▓▓▒▒▒▒▓▓███████████████████████
+████████████████████▓██▓██▓███▓▓███▓████▒████▓▒███▓▒███▓▓▒▒▒▒▒▓██████████████████████
+██████████████████▓███▓████▒█████▓▒▓████▒████▓▓███▒▓▓▓██▓▒▒▓▒▒▒▒▓▓███████████████████
+█████████████████▓████████▓▒▓█████▓▓█████████▓▓██▓█████▒▒███▓▒▒▒▒▓█▓█████████████████
+████████████████▓████████▓▓████▓▓██▓█████████████▓██▓██▓▒███▓▒▒▒▒▒▓██████████████████
+███████████████▓▓█▓▒███████████▒▓██████▓█▓▓▓▒▒▓▓▓▒▒▒███▓▓█▓▓▓▓▓▒▒▒▒▓█████████████████
+███████████████▓██████████▒▓▓▓▒▒▒▓███▓▓▒▒▒▓█████▓▒▒█████▓▓▓▒▓█▓▒▒▒▒▒▓████████████████
+███████████████▓▓▓▓▓▓▒▓████▓▒▒▒▒▓███▓▓▒████████████████▓▓▒▒▓█▓▓▒▒▒▒▒▒▓███████████████
+████████████████▓▒▒▒▒▒▒▓▓▓▓▓▒▒██████████████▓████████▓▓▒▒▓██▓▒▒▒▒▒▒▒▒▓███████████████
+█████████████████▓▓▒▒▒▒▒▒▒▒▓████████████▓▓▓▒▓▓▓▒▒▒▒▒▒▒▒▓▓█▓▓▒▒▒▒▒▒▒▒▒▓███████████████
+███████████████████▓▓▓▒▒▒▒▓██▓▒▓▓▓▒▒▒▒▒▒▓▓▓█████▓▓▓█████▓▓▒▒▒▒▒▒▒▒▒▒▒▓▓██████████████
+████████████████████████▓▓▓▓█▓▒▒██████████████▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████████████
+██████████████████████████▓▓▓▓▒▓███▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓███████████████
+███████████████████████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓███████████████
+█████████████████████████████▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█████▓███████████
+██████████████████████████████▓███▓▓▓▓▓▓█▓▓▒▒▒▒▒█████████▓▒▒▒▒▒▓▓████████████████████
+███████████████████████████████████████████▓▒▒▒████████▓▒▒▒▒▒▒▓██████████████████████
+████████████████████████████████████████████▓▒▒▒▓▓█▓▓▒▒▒▒▒▒▒▒▓███████████████████████
+███████████████████████████████████████████▓█▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓█████████████████████████
+██████████████████████████████████████████████▓▒▒▒▓██████████████████████████████████
+███████████████████████████████████████████████▓▓▒▓██████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████████████████████
+</div>
+        </section>
+        
+        <!-- Posiciona o parágrafo no canto inferior esquerdo -->
+        <section class="fonteParagrafo">
+            <br><br><br>
+
+            <!--Introdução-->
+            <p>Olá, esse site é para calcular o quanto de carbono você emite...não se assuste com essa estética, eu apenas gostei assim.</p>
+            <br>
+            <p>ATENÇÃO: Caso queira já calcular vai até o final da página.</p>
+            <br><br><br><br>
+
+            <!--Guilherme mexe nisso aqui para ficar titulo-->
+            <!--Informações sobre aquecimento global e suas consequêcias-->
+            <h2>1 Vamos falar sobre o aquecimento global...</h2>
+            <br><br><br><br>
+
+            <!--Arte ASCII-->
+            <div class="ascii-art">
+                                    
+                                  
+                                            \*/
+                                          -**O**- 
+                                            /*\
+                                  
+                                    
+                __                     __                    
+               |""|  ____   __   ___  |""|                
+               |""| |""""| |""| |"""| |""| 
+               |""| |""""| |""| |"""| |""|
+               |""| |""""| |""| |"""| |""|
+               "'''"''"'""'"""''"''''"""'"
+            </div>
+
+            <!--Guilherme mexe aqui para colocar as informações em forma de paragrafo-->
+            <!--Informações sobre aquecimento global e suas consequêcias 1.1-->
+            <h3>1.1 O que é o aquecimento global?</h3>
+            <br><br>
+
+            <p>De forma resumida, é o aumento de temperatura no nosso planeta, de forma que não é causado naturalmente
+                pois é o resultado de gases pouluentes que ficam na atmosfera, recentemente (a data que isso tá sendo escrito 27/09/2024)
+                está tendo muitas queimadas e com isso a fumaça está indo para atmosfera aumentando o nível de carbono em forma de CO2, e por causa disso
+                minha vida está um calor insuportavel.
+            </p>
+            <br><br>
+
+            <!--Informações sobre aquecimento global e suas consequêcias 1.2-->
+            <h3>1.2 O aquecimento global traz diversas consequências para o planeta e também para todos os seres vivos. Aqui estão alguns exemplos:</h3>
+            <br><br><br>
+
+            <!--Exemplo 1-->
+            <h4>[A]Mudanças Climáticas e Aumento da Temperatura</h4>
+            <br><br>
+                <p>Elevação das temperaturas médias, afetando ecossistemas e a biodiversidade.</p>
+                <br><br><br>
+
+            <!--Exemplo 2-->
+            <h4>[B]Eventos Climáticos</h4>
+                <br><br>
+                <p>Aumento na frequência e intensidade de fenômenos como furacões, secas, inundações e ondas de calor.</p>
+                <br><br><br>
+
+            <!--Exemplo 3-->
+            <h4>[C]Derretimento de gelo e elevação do nível do mar </h4>
+                <br><br>
+                <p> Impacto na fauna e flora do Ártico e Antártica. Inundação de áreas costeiras, 
+                    deslocamento de comunidades e perda de habitats.</p>
+                <br><br><br>
+
+            <!--Exemplo 4-->
+            <h4>[D]Ecosistemas e Biodiversidade</h4>
+                <br><br>
+
+                <p>Muitos animais e plantas não conseguem se adaptar às rápidas mudanças climáticas,
+                   e também causa alterações nos ecossistemas que afetam a biodiversidade.</p>
+                <br><br><br>
+
+            <!--Exemplo 5-->
+            <h4>[E]Saúde Humana</h4>
+            <br><br>
+            <p>Aumento da poluição do ar, o que pode causar diversos problemas respiratórios. E calor extremo, ocasionando em mal-estar e também problemas de saúde.
+               E o aquecimento global tambem ocasiona a expansão e proriferação de doenças como dengue e malária para novas regiões.</p>            
+            <br><br><br>
+
+            <!--Informações sobre o Carbono--> 
+            <h2>2 Pegada de Carbono: pequenas ações GRANDES IMPACTOS</h3>
+                <br><br><br><br>
+
+                <!--Arte ASCII-->
+                <div class="ascii-art">
+                    ____________________________________________________
+                    |____________________________________________________|
+                    | __     __   ____   ___ ||  ____    ____     _  __  |
+                    ||  |__ |--|_| || |_|   |||_|**|*|__|+|+||___| ||  | |
+                    ||==|^^||--| |=||=| |=*=||| |~~|~|  |=|=|| | |~||==| |
+                    ||  |##||  | | || | |   |||-|  | |==|+|+||-|-|~||__| |
+                    ||__|__||__|_|_||_|_|___|||_|__|_|__|_|_||_|_|_||__|_|
+                    ||_______________________||__________________________|
+                    | _____________________  ||      __   __  _  __    _ |
+                    ||=|=|=|=|=|=|=|=|=|=|=| __..\/ |  |_|  ||#||==|  / /|
+                    || | | | | | | | | | | |/\ \  \\|++|=|  || ||==| / / |
+                    ||_|_|_|_|_|_|_|_|_|_|_/_/\_.___\__|_|__||_||__|/_/__|
+                    |____________________ /\~()/()~//\ __________________|
+                    | __   __    _  _     \_  (_ .  _/ _    ___     _____|
+                    ||~~|_|..|__| || |_ _   \ //\\ /  |=|__|~|~|___| | | |
+                    ||--|+|^^|==|1||2| | |__/\ __ /\__| |==|x|x|+|+|=|=|=|
+                    ||__|_|__|__|_||_|_| /  \ \  / /  \_|__|_|_|_|_|_|_|_|
+                    |_________________ _/    \/\/\/    \_ _______________|
+                    | _____   _   __  |/      \../      \|  __   __   ___|
+                    ||_____|_| |_|##|_||   |   \/ __|   ||_|==|_|++|_|-|||
+                    ||______||=|#|--| |\   \   o    /   /| |  |~|  | | |||
+                    ||______||_|_|__|_|_\   \  o   /   /_|_|__|_|__|_|_|||
+                    |_________ __________\___\____/___/___________ ______|
+                    |__    _  /    ________     ______           /| _ _ _|
+                    |\ \  |=|/   //    /| //   /  /  / |        / ||%|%|%|
+                    | \/\ |*/  .//____//.//   /__/__/ (_)      /  ||=|=|=|
+                  __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
+                    |___\_/   /________//   ________         /  / ||_|_|_|
+                    |___ /   (|________/   |\_______\       /  /| |______|
+                        /                  \|________)     /  / | |
+                </div>
+
+
+            <!--soluções/reduzir a pegada de carbono-->
+            <h3>2.1 O que fazer para reduzir a pegada de carbono?</h3>
+            <br>
+
+            <h3>Existem diversas formas de reduzir a nossa emissão de carbono no dia a dia, veja alguns exemplos:</h3>
+            <br><br>
+            
+            <!--Exemplo 1-->
+            <h4>[A] Os 5 Rs</h4>
+            <br><br>
+            <p>Repensar, Recusar, Reduzir, Reutilizar e Reciclar</p>
+            <br><br>
+
+            <!--Exemplo 2-->
+            <H4>[B]Transporte</H4>
+            <br><br>
+            <p>Veículos elétricos ou híbridos: Optar por carros elétricos ou híbridos,
+               que têm menos ou nenhuma emissão de carbono em comparação com veículos a combustão.</p>
+            <br>
+            <p>Caminhar ou andar de bicicleta: Para distâncias curtas,
+               substituir o carro por uma caminhada ou pedalada é uma maneira eficaz de reduzir as emissões e
+               também faz bem para sua saúde caminhar um pouco.</p>
+            <br><br>
+
+            <!--Exemplo 3-->
+            <h4>[C]Energia</h4>
+            <br><br>
+            <p>Energia solar ou eólica: Instalar painéis solares ou utilizar
+               energia eólica em sua casa pode reduzir o uso de energia de fontes fósseis.</p>
+            <br>
+            <p>Eficientização do consumo energético: Substituir lâmpadas incandescentes por LED,
+               desligar eletrônicos quando não estiverem em uso, e melhorar o isolamento da casa ajuda a reduzir o consumo de energia.</p>
+            <br><br>
+
+            <!--Exemplo 4-->
+            <h4>[D]Compensação de carbono</h4>
+            <br><br>
+            <p>Alguns indivíduos optam por compensar suas emissões reflorestando ou captura de carbono, que tal também fazer?.</p>
+            <br>
+            <p>Plante árvores e crie áreas verdes: Árvores absorvem CO2 e ajudam a mitigar as emissões de carbono.
+               Criar áreas verdes em ambientes urbanos também melhora a qualidade do ar.</p>
+            <br><br>
+
+            <!--Exemplo 5-->
+            <h4>[E]Economia Compartilhada</h4>
+            <br><br>
+            <p>Apoiar o consumo consciente: Promover práticas como a troca de roupas,
+               aluguel de bens e serviços (ao invés da compra), e o reuso de itens, diminuindo a produção e o descarte.</p>
+            <br><br>
+            
+            <!--Bônus-->
+            <!--NOTA add os Rs nos exemplos-->
+            <h4>[?]Percebeu?</h4>
+            <br><br>
+            <p>Se você percebeu, provavelmente deve ter notado alguns Rs nos exemplos, pois de fato eles são muito úteis e nos ajudam
+               a pensar, a não gastar com besteiras, a economizar e a ter uma vida mais saúdavel.
+            </p>
+            <br><br><br>
+
+            <!--Cauculadora de emissão de carbono--> 
+            <h2>3 Calculadora de Emissão de Carbono</h2>
+            <br><br><br><br>
+
+            <!--Arte ASCII-->
+            <div class="ascii-art">
+                _____________________
+               |  _________________  |
+               | |              0. | |
+               | |_________________| |
+               |  ___ ___ ___   ___  |
+               | | 7 | 8 | 9 | | + | |
+               | |___|___|___| |___| |
+               | | 4 | 5 | 6 | | - | |
+               | |___|___|___| |___| |
+               | | 1 | 2 | 3 | | x | |
+               | |___|___|___| |___| |
+               | | . | 0 | = | | / | |
+               | |___|___|___| |___| |
+               |_____________________|
+
+
+        Regular Calculator by Jeremy J. Olson
+            </div>
+                <!--A CALCULADORA mostrando na tela-->
+            <div class="calculadora-container">
+                <h1>Calculadora de Pegada de Carbono</h1>
+
+                <!-- Formulário de cálculo -->
+                <label for="transporte">Distância percorrida por semana (em km):</label>
+                <input type="number" id="transporte" placeholder="Ex: 50">
+
+                <label for="energia">Consumo de energia por mês (kWh):</label>
+                <input type="number" id="energia" placeholder="Ex: 300">
+
+                <label for="residuos">Quantidade de resíduos gerados por semana (kg):</label>
+                <input type="number" id="residuos" placeholder="Ex: 5">
+
+                <button onclick="calcularPegada()">Calcular Pegada de Carbono</button>
+
+                <div id="resultado"></div>
+            </div>
+
+             <!--Arte ASCII-->
+             <div class="ascii-art">
+                __..-----')
+                ,.--._ .-'_..--...-'
+               '-"'. _/_ /  ..--''""'-.
+               _.--""...:._:(_ ..:"::. \
+            .-' ..::--""_(##)#)"':. \ \)    \ _|_ /
+           /_:-:'/  :__(##)##)    ): )   '-./'   '\.-'
+           "  / |  :' :/""\///)  /:.'    --(       )--
+             / :( :( :(   (#//)  "       .-'\.___./'-.
+            / :/|\ :\_:\   \#//\            /  |  \
+            |:/ | ""--':\   (#//)              '
+            \/  \ :|  \ :\  (#//)
+                 \:\   '.':. \#//\
+                  ':|    "--'(#///)
+                             (#///)
+                             (#///)
+                              \#///\
+                              (##///)
+                              (##///)
+                              (##///)
+                              (##///)
+                               \##///\
+                               (###///)
+                               (sjw////)__...-----....__
+                               (#/::'''                 ""--.._
+                          __..-'''                             "-._
+                  __..--""                                         '._
+         ___..--""                                                    "-..____
+           (_ ""---....___                                     __...--"" _)
+             """--...  ___"""""-----......._______......----"""     --"""
+                           """"       ---.....   ___....----
+            </div>
+            <br><br><br>
+
+            <h2>Criadores do site</h2>
+            <br><br><br>
+
+            <h3>Guilherme Rodrigues de Oliveira</h3>
+             <!--Arte ASCII-->
+             <div class="ascii-art">
+                ▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▓▒▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓██████▓▓▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓████████████▓▒▒▓▒▓▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓████████████▓▒▒▓▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓▓▓▓▓██████████▓▓▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓███▓█▓▓██▓▓█▓▓▓▓▓▓█████████▓▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▓▓▓▓▓▓▓▓▓█▓▓▓███████████▓▓▓▓▓▓▓██████▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███▓▒▓█████▓▓▓████▓▓██▓█████▒▒▒▒▒▒▒▒▒▒▒
+                ▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▒▓██████▓▓██▓▓▓▓▓▓█████▒▒▒▒▒▒▒▒▒▒▒
+                ▒▒▒▒▒▒▓▓▓▓▓▓▓▓███▓▓▒▒▒▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓██▓▓▓▓█▓▓██▓██▓▓▓███▓▒▒▒▒▒▒▒▒▒▒▒
+                ▒▒▒▒▓▓▓▓▓▓▓█▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███▓▒▒▒▒▒▒▒▒▒▒▒
+                ▒▓▓▓▓▓▓▓██▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓███▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▓██▓▓▒▒▒▓▓▓▓▓▓█▓▓▓▒▒▒▒▒▒▒▒▒▒
+                ▓███▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒
+                ██▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒
+                █▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ████▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                █████████▓▓▓█▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▒▒▒▒▒▓▓▓▓▓██████▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓████████▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓▓▓██████▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▒▒
+                ▓▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▓▓███▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▒
+                ▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓█▓▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▒
+                ▓▓▓▓▓███▓▓▓▓▓█▓▓▓█▓▓▓▒▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒
+                ▓▓▓██████▓█▓▓▓▓▓▓█▓▓▓▓▒▒▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒
+                ▓▓▓▓███████▓▓▓█▓▓▓▓▓▓▒▒▒▓▒▒▓▓▒▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒
+                ▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▒▓▓▒▓▒▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒
+                ▓▓▓▓▓▓▒▒▒▓▓██▓▓▓▓▓▓▓▒▓▒▓▒▓▒▒▒▓▒▒▒▒▓▓▒▓▒▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒
+                ▓▓▓▓▓▓▓▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒▒▓▒▒▒▓▒▒▒▓▓▒▒▓▓▓▓▓▓▓▒▓▓▒▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒
+                ▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▓▓▓▒▒▒▒▒▓▒▓▓▒▓▒▒▓▒▒▓▓▓▒▓▒▓▒▓▒▓▓▓▓▓▒▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒
+                ▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓▒▒▒▒▒▒▒▒▒▓▒▒▓▓▒▓▒▓▓▒▓▓▓▓▓▓▓▓▒▓▓▓▓▒▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒
+                ▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▒▓▓▒▒▓▒▒▒▓▓▓▒▓▓▓▓▓▓▒▓▒▓▒▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▒▒
+                ▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▒▒▒▓▓▒▒▓▒▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▓▓▓▒▓▒▒▓▓▓▒▓▒▓▓▓▓▒▓▓▒▓▓▒▓▓▒▓▓▓▓▓▓█▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▒▓▓▒▓▓▓▓▒▓▓▒▓▓▒▓▓▓▓▒▓▓▒▓▓▓▓▓▓▓▓▓▓███▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▓▒▓▒▓▓▓▓▓▓▒▓▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▓▒▒▓▒▓▓▓▓▒▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▓▒▓▒▒▓▓▓▓▓▓▓▓▒▓▒▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓█████▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▓▓▓▓▒▓▒▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▓▒▒▓▒▓▓▓▓▓▓▓▓▓▒▓▒▓▓▓▒▓▓▓▓▓▓▓▓▓██████▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▒▓▓▓▒▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████▓▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▓▓▒▒▓▓▓▓▒▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓█████▓▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▓▒▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████▓▓▓▓▓▓▓▓▓
+            </div>
+            <br><br><br>
+            
+            <h3>Kaio Vinícius Gomes Gouveia</h3>
+             <!--Arte ASCII-->
+             <div class="ascii-art">
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▒▓▒▓▓▓▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▒▓▒▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▓▒▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▒▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓██████████████▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓▓▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒██████████████████▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒█████▓▓▒▒▓▓▓▓▓▓▓████▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▓███▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓███▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒███▓▓▓▓▒▒▒▒▒▓▓▓▓▓▓▓▓███▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒███▓▓▓████▓▓▓▓▓█████████▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒███▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓████▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓██▓▓▓████▓▓▓▓█▓███████▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓██▓▓▒▒▒▒▒▓▓▒▓▓▓▓▓▓▓▓██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▓█▓▓██▓▓▓▓▓█▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▒▒▒▒▓▓▓▓███▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▓▓▓▓▓█████▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓██▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒
+                █▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓█████▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓█████▓▓▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓
+                █▓█▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓███▓▓▓▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓
+                █▓█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓
+                ██▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓
+                ██▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▓▓▓▓
+                ██▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓
+                ██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▓▓▓▓
+                ████▒▒▒▒▒▒▒▒▒▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▒▒▒▒▓█▓▓
+                █████▒▒▒▒▒▒▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▒▓███
+                ██████▓▓▓▓▓████▓▓▓▓▒▒▒▒▒▒▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▓▒▒▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓██▓▓▓█████
+                ████████████▓█▓█▓█▓▒▒▒▒▒▒▒▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████████
+                ████▓██████████▓█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓█████▓▓████
+                ███▓▓▓▓███▓█▓████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▓▒▒▓▓▓▓▓██████▓▓████
+                ███▓▓▓▓▓▓█▓██▓███▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓█████▓▓█████
+                ███▓▓▓▓▓▓▓█▓█▓█▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓█████▓▓█▓████
+                ████▓▓▓▓▓▓▓▓█▓█▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓█████▓▓▓█████
+                █████▓▓▓▓▓▓▓▓▓█▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓█████▓▓▓▓█████
+                ███████▓▓▓▓▓▓▓▓▓█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓██████▓▓▓▓█████
+                ███████▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓█████▓▓▓▓▓█████
+            </div>
+
+            <br><br><br><br><br>
+        </section>
+    </header>
+</body>
+</html>
